@@ -1,0 +1,16 @@
+package com.kejiang.yuandl.fastdev;
+
+import android.app.Application;
+
+import org.xutils.x;
+
+/**
+ * Created by yuandl on 2016/9/1 0001.
+ */
+public class Myapplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        x.Ext.init(this);
+    }
+}
