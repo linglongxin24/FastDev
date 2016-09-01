@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:id="@+id/llRoot"
+    android:fitsSystemWindows="true"
+    style="@style/immersion_status"
     android:orientation="vertical">
 <!-- style="@style/immersion_status"-->
     <!-- Title -->
