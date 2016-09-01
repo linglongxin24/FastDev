@@ -79,11 +79,15 @@ public class HttpUtils implements HttpRequest {
         }
         Logger.d("url=" + requestParams.getUri() + "\nrequestParams=" + requestParams.getStringParams().toString());
         List<KeyValue> params = requestParams.getStringParams();
+        String requestParamstr ="url=" + requestParams.getUri();
         for (KeyValue keyValue : params) {
             if (keyValue.key.contains(":")) {
                 throw new RuntimeException("参数异常！");
             }
+            requestParamstr += "\n" + keyValue.key + "=" + keyValue.getValueStr();
+
         }
+        Logger.d(requestParamstr);
         HttpCallBack httpCallBack = new HttpCallBack(context, requestCode, httpResponse, loadingDialog);
         Callback.Cancelable cancelable = x.http().post(requestParams, httpCallBack);
         return cancelable;

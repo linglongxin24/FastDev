@@ -31,6 +31,8 @@ public class MainActivity extends BaseActivity {
         RequestParams requestParams = new RequestParams("http://218.18.102.45:9988/SvrCardInfo.ashx?MethodName=RegisterSystem");
         requestParams.setAsJsonContent(true);
         requestParams.setBodyContent("{\"PhoneNO\":\"13609284854\",\"EmpPWD\":\"Gn9R\\/fkBHAo=\",\"Token\":\"BOMHo06T138pUcbY8P28Md2WL5exk63zfxWRUFrIrKxf5xsz7Q0Qtd5aEsNqUFmAVGfCsxHdaG1\\/AfkIxnGxVmY\\/xDmZNaNWb3ou7qi+S9a3L\\/EnGs9j\\/KQmy7kbSfOAL7S3TVHb8rUZPiTY9uNLdhqTnrfmhjxM8ozN\\/rdI5bI=\",\"TimeStamp\":\"1472713084\",\"SignString\":\"83a212f78e8ace39caac0da4f05d3a87\"}");
+        requestParams.addBodyParameter("ss","555");
+        requestParams.addBodyParameter("ss","555");
         ajax(requestParams);
     }
 
