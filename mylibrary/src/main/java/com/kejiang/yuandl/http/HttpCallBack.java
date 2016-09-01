@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.TypeReference;
-import com.kejiang.yuandl.bean.JsonBean;
+import com.kejiang.yuandl.config.Config;
 import com.kejiang.yuandl.utils.Tools;
 import com.kejiang.yuandl.view.LoadingDialog;
 import com.orhanobut.logger.Logger;
@@ -70,25 +70,25 @@ public class HttpCallBack implements Callback.ProgressCallback<String> {
     @Override
     public void onSuccess(String result) {
         Logger.json(result);
-        JsonBean jsonBean = null;
+        ArrayMap<String, Object> jsonBean = null;
         try {
             jsonBean = jsonParse(result);
-            if (jsonBean.getMsg() != null && !jsonBean.getMsg().isEmpty()) {
-                Toast.makeText(context, jsonBean.getMsg(), Toast.LENGTH_SHORT).show();
+            String msg = Tools.getValue(jsonBean, Config.msg);
+            int code = Integer.parseInt(Tools.getValue(jsonBean, Config.code));
+
+            if (msg != null && !msg.isEmpty()) {
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
             }
-            if (jsonBean.getStatus() == 1) {
-                Map<String, Object> data = new ArrayMap<String, Object>();
-                if (null != jsonBean.getData() && jsonBean.getData().size() > 0) {
-                    data = jsonBean.getData();
-                }
+            if (code == Config.sucessCode) {
+                Map<String, Object> data = (Map<String, Object>) jsonBean.get(Config.data);
                 httpResponse.netOnSuccess(data);
                 if (requestCode != -1) {
                     httpResponse.netOnSuccess(data, requestCode);
                 }
             } else {
-                httpResponse.netOnOtherStatus(jsonBean.getStatus(), jsonBean.getMsg());
+                httpResponse.netOnOtherStatus(code, msg);
                 if (requestCode != -1) {
-                    httpResponse.netOnOtherStatus(jsonBean.getStatus(), jsonBean.getMsg(), requestCode);
+                    httpResponse.netOnOtherStatus(code,msg, requestCode);
                 }
             }
         } catch (Exception e) {
@@ -141,41 +141,40 @@ public class HttpCallBack implements Callback.ProgressCallback<String> {
         }
     }
 
-    private JsonBean jsonParse(String json) throws JSONException {
+    private ArrayMap<String, Object> jsonParse(String json) throws JSONException {
         ArrayMap<String, Object> arrayMap = JSON.parseObject(json, new TypeReference<ArrayMap<String, Object>>() {
         }.getType());
-        JsonBean jsonBean = new JsonBean();
-        if (arrayMap.containsKey("data")) {
-            Object data = arrayMap.get("data");
-//            System.out.println("data.getClass().getName()=" + data.getClass().getName());
-            ArrayMap<String, Object> rrData = null;
+
+        ArrayMap<String, Object> returnData = new ArrayMap<String, Object>();
+        ArrayMap<String, Object> rrData = null;
+        if (arrayMap.containsKey(Config.data)) {
+            Object data = arrayMap.get(Config.data);
             if (data instanceof String) {
-//                System.out.println("data instanceof String");
                 rrData = new ArrayMap<String, Object>();
-                rrData.put("data", data.toString());
+                returnData.put(Config.data, data.toString());
             } else if (data instanceof JSONArray) {
-//                System.out.println("data instanceof JSONArray");
                 rrData = new ArrayMap<String, Object>();
-                rrData.put("data", data);
+                rrData.put(Config.data, data);
+                returnData.put(Config.data, rrData);
             } else if (data instanceof com.alibaba.fastjson.JSONObject) {
-//                System.out.println("data instanceof JSONObject");
                 rrData = JSON.parseObject(data.toString(), new TypeReference<ArrayMap<String, Object>>() {
                 }.getType());
+                returnData.put(Config.data, rrData);
+            } else {
+                returnData.put(Config.data, new ArrayMap<>());
             }
-            jsonBean.setData(rrData);
         } else {
+            rrData = new ArrayMap<>();
             Set<String> keys = arrayMap.keySet();
-            ArrayMap<String, Object> rrData = new ArrayMap<>();
             for (String s : keys) {
-                if (!s.equals("status")) {
+                if (!s.equals(Config.data)) {
                     rrData.put(s, arrayMap.get(s));
                 }
             }
-            jsonBean.setData(rrData);
+            returnData.put(Config.data, rrData);
         }
-        jsonBean.setStatus(Integer.valueOf(arrayMap.get("status").toString()));
-        jsonBean.setMsg(Tools.getValue(arrayMap, "msg"));
-
-        return jsonBean;
+        returnData.put(Config.code, Tools.getValue(arrayMap, Config.code));
+        returnData.put(Config.msg, Tools.getValue(arrayMap, Config.msg));
+        return returnData;
     }
 }

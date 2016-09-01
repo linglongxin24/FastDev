@@ -4,8 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.kejiang.yuandl.base.BaseActivity;
+import com.kejiang.yuandl.config.Config;
+import com.orhanobut.logger.Logger;
 
 import org.xutils.http.RequestParams;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends BaseActivity {
 
@@ -29,7 +35,15 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public void netOnSuccess(Map<String, Object> data) {
+        super.netOnSuccess(data);
+        List<Map<String, Object>> list = (List<Map<String, Object>>) data.get(Config.data);
+        Logger.d("list=" + list.toString());
+    }
+
+    @Override
     public void addListener() {
 
     }
+
 }
