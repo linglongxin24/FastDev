@@ -182,7 +182,7 @@ public class AppManager {
         for (int i = 0, size = activityList.size(); i < size; i++) {
             Activity activity = activityList.get(i);
             if (null != activityList.get(i)) {
-                if (!activityList.get(i).getClass().getSimpleName().equals("UserSetActivity")) {
+                if (!activityList.get(i).getClass().getSimpleName().equals("LoginActivity")) {
                     activityList.get(i).finish();
                     activityStack.remove(activity);
                 }

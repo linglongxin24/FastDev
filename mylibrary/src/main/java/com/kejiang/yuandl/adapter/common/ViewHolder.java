@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.zhy.autolayout.utils.AutoUtils;
 
+
 public class ViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;
     private int mPosition;

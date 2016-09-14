@@ -8,7 +8,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.TypeReference;
-import com.kejiang.yuandl.config.Config;
 import com.kejiang.yuandl.utils.Tools;
 import com.kejiang.yuandl.view.LoadingDialog;
 import com.orhanobut.logger.Logger;
@@ -73,14 +72,14 @@ public class HttpCallBack implements Callback.ProgressCallback<String> {
         ArrayMap<String, Object> jsonBean = null;
         try {
             jsonBean = jsonParse(result);
-            String msg = Tools.getValue(jsonBean, Config.msg);
-            int code = Integer.parseInt(Tools.getValue(jsonBean, Config.code));
+            String msg = Tools.getValue(jsonBean, HttpUtils.getInstance().getMsg());
+            int code = Integer.parseInt(Tools.getValue(jsonBean, HttpUtils.getInstance().getCode()));
 
             if (msg != null && !msg.isEmpty()) {
                 Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
             }
-            if (code == Config.sucessCode) {
-                Map<String, Object> data = (Map<String, Object>) jsonBean.get(Config.data);
+            if (code == HttpUtils.getInstance().getSuccessCode()) {
+                Map<String, Object> data = (Map<String, Object>) jsonBean.get(HttpUtils.getInstance().getData());
                 httpResponse.netOnSuccess(data);
                 if (requestCode != -1) {
                     httpResponse.netOnSuccess(data, requestCode);
@@ -88,7 +87,7 @@ public class HttpCallBack implements Callback.ProgressCallback<String> {
             } else {
                 httpResponse.netOnOtherStatus(code, msg);
                 if (requestCode != -1) {
-                    httpResponse.netOnOtherStatus(code,msg, requestCode);
+                    httpResponse.netOnOtherStatus(code, msg, requestCode);
                 }
             }
         } catch (Exception e) {
@@ -147,34 +146,34 @@ public class HttpCallBack implements Callback.ProgressCallback<String> {
 
         ArrayMap<String, Object> returnData = new ArrayMap<String, Object>();
         ArrayMap<String, Object> rrData = null;
-        if (arrayMap.containsKey(Config.data)) {
-            Object data = arrayMap.get(Config.data);
+        String dataStrKey = HttpUtils.getInstance().getData();
+        if (arrayMap.containsKey(dataStrKey)) {
+            Object data = arrayMap.get(dataStrKey);
             if (data instanceof String) {
-                rrData = new ArrayMap<String, Object>();
-                returnData.put(Config.data, data.toString());
+                returnData.put(dataStrKey, data.toString());
             } else if (data instanceof JSONArray) {
                 rrData = new ArrayMap<String, Object>();
-                rrData.put(Config.data, data);
-                returnData.put(Config.data, rrData);
+                rrData.put(dataStrKey, data);
+                returnData.put(dataStrKey, rrData);
             } else if (data instanceof com.alibaba.fastjson.JSONObject) {
                 rrData = JSON.parseObject(data.toString(), new TypeReference<ArrayMap<String, Object>>() {
                 }.getType());
-                returnData.put(Config.data, rrData);
+                returnData.put(dataStrKey, rrData);
             } else {
-                returnData.put(Config.data, new ArrayMap<>());
+                returnData.put(dataStrKey, new ArrayMap<>());
             }
         } else {
             rrData = new ArrayMap<>();
             Set<String> keys = arrayMap.keySet();
             for (String s : keys) {
-                if (!s.equals(Config.data)) {
+                if (!s.equals(dataStrKey)) {
                     rrData.put(s, arrayMap.get(s));
                 }
             }
-            returnData.put(Config.data, rrData);
+            returnData.put(dataStrKey, rrData);
         }
-        returnData.put(Config.code, Tools.getValue(arrayMap, Config.code));
-        returnData.put(Config.msg, Tools.getValue(arrayMap, Config.msg));
+        returnData.put(HttpUtils.getInstance().getCode(), Tools.getValue(arrayMap, HttpUtils.getInstance().getCode()));
+        returnData.put(HttpUtils.getInstance().getMsg(), Tools.getValue(arrayMap, HttpUtils.getInstance().getMsg()));
         return returnData;
     }
 }

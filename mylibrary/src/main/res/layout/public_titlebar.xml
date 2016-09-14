@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_titlebar"
     android:layout_width="match_parent"
-    android:layout_height="160px"
-    android:background="#FFFFFF"
+    android:layout_height="148px"
+    android:background="#313a49"
+    android:fitsSystemWindows="true"
     android:orientation="horizontal">
 <!--
     android:fitsSystemWindows="true"-->
@@ -18,8 +19,8 @@
         android:paddingTop="48px"
         android:paddingBottom="48px"
         android:gravity="center"
-        android:onClick="onBackward"
-        android:src="@drawable/arrow_back_red"
+        android:onClick="onLeft"
+        android:src="@drawable/arrow_back_write"
         android:visibility="visible" />
     <TextView
         android:id="@+id/text_title"
@@ -30,7 +31,7 @@
         android:gravity="center_horizontal|center"
         android:singleLine="true"
         android:text="标题栏"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="58px" />
 
     <TextView
@@ -40,7 +41,7 @@
         android:layout_alignParentRight="true"
         android:ellipsize="end"
         android:gravity="center"
-        android:onClick="onForward"
+        android:onClick="onRight"
         android:paddingLeft="30px"
         android:paddingRight="33px"
         android:singleLine="true"

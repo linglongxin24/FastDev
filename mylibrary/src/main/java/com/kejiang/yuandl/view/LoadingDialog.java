@@ -33,7 +33,9 @@ public class LoadingDialog {
             dialog.setContentView(view);
             dialog.setCanceledOnTouchOutside(false);
         }
-        dialog.show();
+        if(!dialog.isShowing()){
+            dialog.show();
+        }
         return dialog;
     }
 

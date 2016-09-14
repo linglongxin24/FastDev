@@ -17,15 +17,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initTitleBar() {
-
     }
 
     @Override
     public void initViews() {
 
         setContentView(R.layout.activity_main);
-    }
 
+    }
     @Override
     public void initData() {
         RequestParams requestParams = new RequestParams("http://218.18.102.45:9988/SvrCardInfo.ashx?MethodName=RegisterSystem");

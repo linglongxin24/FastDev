@@ -3,6 +3,7 @@ package com.kejiang.yuandl.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -65,11 +67,11 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
         addListener();
     }
 
-    public TextView getmForwardButton() {
+    public TextView getmRightbButton() {
         return mForwardButton;
     }
 
-    public ImageView getmBackwardbButton() {
+    public ImageView getmLeftButton() {
         return mBackwardbButton;
     }
 
@@ -97,11 +99,33 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      * 设置沉浸式状态栏
      */
     private void setImmersionStatus() {
+        Window win = getWindow();
+        //4.4版本以上才有沉浸式状态栏
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            // 透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            // 透明导航栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            //透明状态栏
+            win.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            win.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+            //解决5.0版本以上沉浸式状态栏为半透明
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                // 设置系统UI布局全屏
+                win.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+                //设置状态栏全透明，先清除透明状态栏设置。
+                win.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                //直接设置状态栏的颜色。
+                win.setStatusBarColor(Color.TRANSPARENT);
+            }
+        }
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |     WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+            window.setNavigationBarColor(Color.TRANSPARENT);
         }
     }
 
@@ -186,7 +210,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      * @param backwardResid 文字
      * @param show          true则显示
      */
-    protected void showBackwardView(int backwardResid, boolean show) {
+    protected void showLeftView(int backwardResid, boolean show) {
         if (mBackwardbButton != null) {
             if (show) {
 //                mBackwardbButton.setText(backwardResid);
@@ -197,13 +221,13 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
         } // else ignored
     }
 
-    protected void setBackwardViewLayoutParams(LinearLayout.LayoutParams layoutParams) {
+    protected void setLeftViewLayoutParams(LinearLayout.LayoutParams layoutParams) {
         if (mBackwardbButton != null) {
             mBackwardbButton.setLayoutParams(layoutParams);
         }
     }
 
-    protected void setForwardViewLayoutParams(LinearLayout.LayoutParams layoutParams) {
+    protected void setRightViewLayoutParams(LinearLayout.LayoutParams layoutParams) {
         if (mForwardButton != null) {
             mForwardButton.setLayoutParams(layoutParams);
         }
@@ -215,7 +239,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      * @param forwardResId 文字
      * @param show         true则显示
      */
-    protected void showForwardView(int forwardResId, boolean show) {
+    protected void showRightView(int forwardResId, boolean show) {
         if (mForwardButton != null) {
             if (show) {
                 mForwardButton.setVisibility(View.VISIBLE);
@@ -232,7 +256,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      * @param title 文字
      * @param show  true则显示
      */
-    protected void showForwardView(CharSequence title, boolean show) {
+    protected void showRightView(CharSequence title, boolean show) {
         if (mForwardButton != null) {
             if (show) {
                 mForwardButton.setText(title);
@@ -249,7 +273,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      *
      * @param backwardView
      */
-    public void onBackward(View backwardView) {
+    public void onLeft(View backwardView) {
         finish();
     }
 
@@ -258,7 +282,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      *
      * @param forwardView
      */
-    public void onForward(View forwardView) {
+    public void onRight(View forwardView) {
         Toast.makeText(this, "点击提交", Toast.LENGTH_LONG).show();
     }
 
@@ -341,8 +365,8 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      *
      * @param activity
      */
-    protected void startActivity(Activity activity) {
-        startActivity(new Intent(context, activity.getClass()));
+    protected void startActivity(Class activity) {
+        startActivity(new Intent(context, activity));
     }
 
     /**
