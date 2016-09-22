@@ -29,7 +29,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-    //    compile 'com.zhy:autolayout:1.4.3'
+//        compile 'com.zhy:autolayout:1.4.3'
     compile 'com.orhanobut:logger:1.8'
     compile 'org.xutils:xutils:3.3.34'
     compile project(':autolayout')

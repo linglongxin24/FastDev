@@ -69,7 +69,7 @@ public class HttpCallBack implements Callback.ProgressCallback<String> {
     @Override
     public void onSuccess(String result) {
         Logger.json(result);
-        ArrayMap<String, Object> jsonBean = null;
+        ArrayMap<String, Object> jsonBean;
         try {
             jsonBean = jsonParse(result);
             String msg = Tools.getValue(jsonBean, HttpUtils.getInstance().getMsg());
