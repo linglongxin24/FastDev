@@ -2,6 +2,8 @@ package com.kejiang.yuandl.fastdev;
 
 import android.app.Application;
 
+import com.orhanobut.logger.Logger;
+
 import org.xutils.x;
 
 /**
@@ -12,5 +14,6 @@ public class Myapplication extends Application {
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
+        Logger.init("yanhao");
     }
 }

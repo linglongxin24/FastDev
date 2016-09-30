@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FastDev.iml" filepath="$PROJECT_DIR$/FastDev.iml" />
-      <module fileurl="file://$PROJECT_DIR$/NativeImgCompress/NativeImgCompress.iml" filepath="$PROJECT_DIR$/NativeImgCompress/NativeImgCompress.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/autolayout/autolayout.iml" filepath="$PROJECT_DIR$/autolayout/autolayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nativeImgCompress/nativeImgCompress.iml" filepath="$PROJECT_DIR$/nativeImgCompress/nativeImgCompress.iml" />
     </modules>
   </component>
 </project>
