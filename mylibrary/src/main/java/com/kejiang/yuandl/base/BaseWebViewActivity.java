@@ -34,6 +34,8 @@ public abstract class BaseWebViewActivity extends BaseActivity {
         WebSettings webSettings = wv.getSettings();
         //设置WebView属性，能够执行Javascript脚本
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setPluginState(WebSettings.PluginState.ON);
+        webSettings.setDomStorageEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
         //设置可以访问文件
         webSettings.setAllowFileAccess(true);
