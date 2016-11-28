@@ -20,7 +20,7 @@ import rx.Observable;
 
 /**
  * Created by Ｔａｍｉｃ on 2016-07-08.
- * {@link # https://github.com/NeglectedByBoss/RetrofitClient}
+ * {link # https://github.com/NeglectedByBoss/RetrofitClient}
  */
 public interface BaseApiService {
 

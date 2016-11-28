@@ -22,7 +22,7 @@ import okhttp3.HttpUrl;
 
 /**
  * Created by Tamic on 2016-06-09.
- * {@link # https://github.com/NeglectedByBoss/RetrofitClient}
+ * {link # https://github.com/NeglectedByBoss/RetrofitClient}
  */
 public class PersistentCookieStore {
     private static final String LOG_TAG = "PersistentCookieStore";

@@ -12,10 +12,8 @@ import java.util.TimerTask;
 
 /**
  * 自定义倒计时按钮
- * <p/>
  *
  * @author Dylan
- *         <p/>
  *         [佛祖保佑 永无BUG]
  *         Created by Dylan on 2015/11/5 0005.
  */

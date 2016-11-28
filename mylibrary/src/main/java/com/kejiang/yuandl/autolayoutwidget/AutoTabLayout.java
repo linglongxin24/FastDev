@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kejiang.yuandl.R;
-import com.zhy.autolayout.utils.AutoUtils;
-import com.zhy.autolayout.utils.DimenUtils;
+import com.kejiang.yuandl.autolayout.utils.AutoUtils;
+import com.kejiang.yuandl.autolayout.utils.DimenUtils;
 
 /**
  * Created by zhy on 16/3/3.

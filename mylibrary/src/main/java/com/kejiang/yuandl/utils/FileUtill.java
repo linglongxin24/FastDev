@@ -57,11 +57,8 @@ public class FileUtill {
     }
 
     /**
-     * @param @return 设定文件
-     * @return String    返回类型
-     * @throws
-     * @Title: getImageParentsPathTemporary
-     * @Description: 临时路径
+     * 获取文件父目录
+     * @return 父目录
      */
     public static String getImageParentsPathTemporary() {
         if (isSdCardMounted()) {
@@ -176,12 +173,9 @@ public class FileUtill {
             {".zip", "application/x-zip-compressed"}, {"", "*/*"}};
 
     /**
-     * @param @param  fileS
-     * @param @return 设定文件
-     * @return String 返回类型
-     * @throws
-     * @Title: FormetFileSize
-     * @Description: 转换文件大小
+     * 格式化文件大小
+     * @param fileS 文件大小
+     * @return 自动转换为M或者更大的G
      */
     public static String FormetFileSize(long fileS) {
         DecimalFormat df = new DecimalFormat("#.00");

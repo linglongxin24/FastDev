@@ -18,11 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kejiang.yuandl.R;
+import com.kejiang.yuandl.autolayout.utils.AutoUtils;
 import com.kejiang.yuandl.config.FilePath;
+import com.kejiang.yuandl.utils.NativeUtil;
 import com.orhanobut.logger.Logger;
-import com.zhy.autolayout.utils.AutoUtils;
-
-import net.bither.util.NativeUtil;
 
 import java.io.File;
 

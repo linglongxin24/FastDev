@@ -10,7 +10,7 @@ import okhttp3.Cookie;
 /**
  * SerializableOkHttpCookies
  * Created byTamic on 2016-06-09.
- * {@link # https://github.com/NeglectedByBoss/RetrofitClient}
+ * {link # https://github.com/NeglectedByBoss/RetrofitClient}
  */
 public class SerializableOkHttpCookies implements Serializable {
 

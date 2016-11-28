@@ -19,7 +19,7 @@ public class ImageUtils {
      * 读取照片exif信息中的旋转角度
      *
      * @param path 照片路径
-     * @return角度
+     * @return  角度
      */
 
     public static int readPictureDegree(String path) {

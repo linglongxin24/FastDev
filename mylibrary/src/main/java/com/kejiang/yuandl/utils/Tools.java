@@ -59,11 +59,7 @@ import java.util.regex.Pattern;
 public class Tools {
 
     /**
-     * TODO<取得日期是某年的第几周>
-     *
-     * @param date
-     * @return
-     * @throw [url=home.php?mod=space&uid=7300]@return[/url] int
+     * 取得日期是某年的第几周
      */
     @SuppressLint("SimpleDateFormat")
     public static int getWeekOfYear(Date date) {
@@ -993,11 +989,11 @@ public class Tools {
 
     /**
      * 播放动画
-     *
      * @param layout
      * @param img
-     * @param
-     * @param
+     * @param drawableBefore
+     * @param drawableClick
+     * @param isClicked
      */
     public static void startAnimation(final View layout, ImageView img,
                                       int drawableBefore, int drawableClick, boolean isClicked) {
@@ -1117,7 +1113,7 @@ public class Tools {
      * 将100以内的阿拉伯数字转换成中文汉字（15变成十五）
      *
      * @param round 最大值50
-     * @return >99的，返回“”
+     * @return 大于99的，返回“”
      */
     public static String getHanZi1(int round) {
         if (round > 99 || round == 0) {
@@ -1196,9 +1192,9 @@ public class Tools {
 
     /**
      * 获取map中的值
-     *
-     * @param
-     * @return
+     * @param map map
+     * @param key map的key
+     * @return map的值
      */
     public static String getValue(Map<String, Object> map, String key) {
         if (map == null || map.size() == 0) {

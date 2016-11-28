@@ -1,0 +1,13 @@
+com.kejiang.yuandl.adapter
+com.kejiang.yuandl.adapter.common
+com.kejiang.yuandl.adapter.common.abslistview
+com.kejiang.yuandl.adapter.common.recyclerview
+com.kejiang.yuandl.adapter.common.recyclerview.support
+com.kejiang.yuandl.autolayoutwidget
+com.kejiang.yuandl.base
+com.kejiang.yuandl.config
+com.kejiang.yuandl.http
+com.kejiang.yuandl.net
+com.kejiang.yuandl.utils
+com.kejiang.yuandl.view
+com.kejiang.yuandl.view.snapscrollview

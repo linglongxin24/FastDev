@@ -89,8 +89,8 @@ public class HttpUtils implements HttpRequest {
                 throw new RuntimeException("参数异常！");
             }
             requestParamstr += "\n" + keyValue.key + "=" + keyValue.getValueStr();
-
         }
+
         Logger.d(requestParamstr);
         HttpCallBack httpCallBack = new HttpCallBack(context, requestCode, httpResponse, loadingDialog);
         Callback.Cancelable cancelable = x.http().post(requestParams, httpCallBack);

@@ -18,9 +18,9 @@ public class ImageSizeUtil
 	 * 根据需求的宽和高以及图片实际的宽和高计算SampleSize
 	 * 
 	 * @param options
-	 * @param width
-	 * @param height
-	 * @return
+	 * @param reqWidth
+	 * @param reqHeight
+	 * @return 缩放比
 	 */
 	public static int caculateInSampleSize(Options options, int reqWidth,
 										   int reqHeight)

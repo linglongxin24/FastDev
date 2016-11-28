@@ -79,7 +79,6 @@ public class McoySnapPageLayout extends ViewGroup {
 	public interface PageSnapedListener {
 
 		/**
-		 * @mcoy
 		 * 当从某一页滑动到另一页完成时的回调函数
 		 */
 		void onSnapedCompleted(int derection);
@@ -164,7 +163,7 @@ public class McoySnapPageLayout extends ViewGroup {
 	}
 	
 	/**
-	 * @mcoy add
+	 *  add
 	 * computeScroll方法会调用postInvalidate()方法， 而postInvalidate()方法中系统
 	 * 又会调用computeScroll方法， 因此会一直在循环互相调用， 循环的终结点是在computeScrollOffset()
 	 * 当computeScrollOffset这个方法返回false时，说明已经结束滚动。

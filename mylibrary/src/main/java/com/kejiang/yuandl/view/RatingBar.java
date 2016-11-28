@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -14,50 +13,115 @@ import com.kejiang.yuandl.R;
 import java.math.BigDecimal;
 
 /**
- * Created by hedge_hog on 2015/6/11.
- * <p/>
- * add halfstar show
- * <p/>
+ * Created by dylan on 2015/6/11.
+ * 自定义打分控件RatingBar
+ * 可以自定义星星大小和间距
  * Correction clickEvent from Xml
  */
 public class RatingBar extends LinearLayout {
+    /**
+     * 是否可点击
+     */
     private boolean mClickable;
+    /**
+     * 星星总数
+     */
     private int starCount;
+    /**
+     * 星星的点击事件
+     */
     private OnRatingChangeListener onRatingChangeListener;
+    /**
+     * 每个星星的大小
+     */
     private float starImageSize;
+    /**
+     * 每个星星的间距
+     */
+    private float starPadding;
+    /**
+     * 星星的显示数量，支持小数点
+     */
     private float starStep;
+    /**
+     * 空白的默认星星图片
+     */
     private Drawable starEmptyDrawable;
+    /**
+     * 选中后的星星填充图片
+     */
     private Drawable starFillDrawable;
+    /**
+     * 半颗星的图片
+     */
     private Drawable starHalfDrawable;
-    private final StepSize stepSize;
+    /**
+     * 每次点击星星所增加的量是整个还是半个
+     */
+    private StepSize stepSize;
 
+    /**
+     * 设置半星的图片资源文件
+     *
+     * @param starHalfDrawable
+     */
     public void setStarHalfDrawable(Drawable starHalfDrawable) {
         this.starHalfDrawable = starHalfDrawable;
     }
 
-
-    public void setOnRatingChangeListener(OnRatingChangeListener onRatingChangeListener) {
-        this.onRatingChangeListener = onRatingChangeListener;
-    }
-
-    public void setmClickable(boolean clickable) {
-        this.mClickable = clickable;
-    }
-
+    /**
+     * 设置满星的图片资源文件
+     *
+     * @param starFillDrawable
+     */
     public void setStarFillDrawable(Drawable starFillDrawable) {
         this.starFillDrawable = starFillDrawable;
     }
 
+    /**
+     * 设置空白和默认的图片资源文件
+     *
+     * @param starEmptyDrawable
+     */
     public void setStarEmptyDrawable(Drawable starEmptyDrawable) {
         this.starEmptyDrawable = starEmptyDrawable;
     }
 
+    /**
+     * 设置星星是否可以点击操作
+     *
+     * @param clickable
+     */
+    public void setClickable(boolean clickable) {
+        this.mClickable = clickable;
+    }
+
+    /**
+     * 设置星星点击事件
+     *
+     * @param onRatingChangeListener
+     */
+    public void setOnRatingChangeListener(OnRatingChangeListener onRatingChangeListener) {
+        this.onRatingChangeListener = onRatingChangeListener;
+    }
+
+    /**
+     * 设置星星的大小
+     *
+     * @param starImageSize
+     */
     public void setStarImageSize(float starImageSize) {
         this.starImageSize = starImageSize;
     }
 
+    public void setStepSize(StepSize stepSize) {
+        this.stepSize = stepSize;
+    }
 
     /**
+     * 构造函数
+     * 获取xml中设置的资源文件
+     *
      * @param context
      * @param attrs
      */
@@ -66,6 +130,7 @@ public class RatingBar extends LinearLayout {
         setOrientation(LinearLayout.HORIZONTAL);
         TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RatingBar);
         starImageSize = mTypedArray.getDimension(R.styleable.RatingBar_starImageSize, 20);
+        starPadding = mTypedArray.getDimension(R.styleable.RatingBar_starPadding, 10);
         starStep = mTypedArray.getFloat(R.styleable.RatingBar_starStep, 1.0f);
         stepSize = StepSize.fromStep(mTypedArray.getInt(R.styleable.RatingBar_stepSize, 1));
         starCount = mTypedArray.getInteger(R.styleable.RatingBar_starCount, 5);
@@ -75,14 +140,13 @@ public class RatingBar extends LinearLayout {
         mClickable = mTypedArray.getBoolean(R.styleable.RatingBar_clickable, true);
         mTypedArray.recycle();
         for (int i = 0; i < starCount; ++i) {
-            final ImageView imageView = getStarImageView(context, attrs);
+            final ImageView imageView = getStarImageView();
             imageView.setImageDrawable(starEmptyDrawable);
             imageView.setOnClickListener(
                     new OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if (mClickable) {
-
                                 //浮点数的整数部分
                                 int fint = (int) starStep;
                                 BigDecimal b1 = new BigDecimal(Float.toString(starStep));
@@ -96,9 +160,10 @@ public class RatingBar extends LinearLayout {
                                 if (indexOfChild(v) > fint) {
                                     setStar(indexOfChild(v) + 1);
                                 } else if (indexOfChild(v) == fint) {
-                                    if(stepSize==StepSize.Full){
+                                    if (stepSize == StepSize.Full) {//如果是满星 就不考虑半颗星了
                                         return;
                                     }
+                                    //点击之后默认每次先增加一颗星，再次点击变为半颗星
                                     if (imageView.getDrawable().getCurrent().getConstantState().equals(starHalfDrawable.getConstantState())) {
                                         setStar(indexOfChild(v) + 1);
                                     } else {
@@ -119,20 +184,21 @@ public class RatingBar extends LinearLayout {
     }
 
     /**
-     * @param context
-     * @param attrs
+     * 设置每颗星星的参数
+     *
      * @return
      */
-    private ImageView getStarImageView(Context context, AttributeSet attrs) {
-        ImageView imageView = new ImageView(context);
-        ViewGroup.LayoutParams para = new ViewGroup.LayoutParams(
-                Math.round(starImageSize),
-                Math.round(starImageSize)
-        );
-        imageView.setLayoutParams(para);
-        imageView.setPadding(0, 0, 5, 0);
+    private ImageView getStarImageView() {
+        ImageView imageView = new ImageView(getContext());
+
+        LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(
+                Math.round(starImageSize), Math.round(starImageSize));//设置每颗星星在线性布局的大小
+        layout.setMargins(0, 0, Math.round(starPadding), 0);//设置每颗星星在线性布局的间距
+        imageView.setLayoutParams(layout);
+        imageView.setAdjustViewBounds(true);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageDrawable(starEmptyDrawable);
-        imageView.setMaxWidth(10);
+        imageView.setMinimumWidth(10);
         imageView.setMaxHeight(10);
         return imageView;
 
@@ -140,7 +206,7 @@ public class RatingBar extends LinearLayout {
 
 
     /**
-     * setting start
+     * 设置星星的个数
      *
      * @param rating
      */
@@ -158,73 +224,52 @@ public class RatingBar extends LinearLayout {
         //浮点数的小数部分
         float fPoint = b1.subtract(b2).floatValue();
 
-        //drawfullstar
+        //设置选中的星星
         for (int i = 0; i < fint; ++i) {
             ((ImageView) getChildAt(i)).setImageDrawable(starFillDrawable);
         }
+        //设置没有选中的星星
         for (int i = fint; i < starCount; i++) {
             ((ImageView) getChildAt(i)).setImageDrawable(starEmptyDrawable);
         }
-
+        //小数点默认增加半颗星
         if (fPoint > 0) {
             ((ImageView) getChildAt(fint)).setImageDrawable(starHalfDrawable);
         }
     }
 
-//  /**
-//     * setting start
-//     *
-//     * @param starCount
-//     */
-//
-//    public void setStar(float starCount) {
-//
-//        //浮点数的整数部分
-//        int fint = (int) starCount;
-//        BigDecimal b1 = new BigDecimal(Float.toString(starCount));
-//        BigDecimal b2 = new BigDecimal(Integer.toString(fint));
-//        //浮点数的小数部分
-//        float fPoint = b1.subtract(b2).floatValue();
-//        Logger.d("fint=" + fint);
-//        Logger.d("fPoint=" + fPoint);
-//
-//        starCount = fint > this.starCount ? this.starCount : fint;
-//        starCount = starCount < 0 ? 0 : starCount;
-//
-//        //drawfullstar
-//        for (int i = 0; i < starCount; ++i) {
-//            ((ImageView) getChildAt(i)).setImageDrawable(starFillDrawable);
-//        }
-//
-//        //drawhalfstar
-//        if (fPoint > 0) {
-//            ((ImageView) getChildAt(fint)).setImageDrawable(starHalfDrawable);
-//
-//            //drawemptystar
-//            for (int i = this.starCount - 1; i >= starCount + 1; --i) {
-//                ((ImageView) getChildAt(i)).setImageDrawable(starEmptyDrawable);
-//            }
-//
-//
-//        } else {
-//            //drawemptystar
-//            for (int i = this.starCount - 1; i >= starCount; --i) {
-//                ((ImageView) getChildAt(i)).setImageDrawable(starEmptyDrawable);
-//            }
-//
-//        }
-//
-//
-//    }
-//
-
     /**
-     * change stat listener
+     * 操作星星的点击事件
      */
     public interface OnRatingChangeListener {
-
-        void onRatingChange(float RatingCount);
+        /**
+         * 选中的星星的个数
+         *
+         * @param ratingCount
+         */
+        void onRatingChange(float ratingCount);
 
     }
 
+    /**
+     * 星星每次增加的方式整星还是半星，枚举类型
+     * 类似于View.GONE
+     */
+    public enum StepSize {
+        Half(0), Full(1);
+        int step;
+
+        StepSize(int step) {
+            this.step = step;
+        }
+
+        public static StepSize fromStep(int step) {
+            for (StepSize f : values()) {
+                if (f.step == step) {
+                    return f;
+                }
+            }
+            throw new IllegalArgumentException();
+        }
+    }
 }

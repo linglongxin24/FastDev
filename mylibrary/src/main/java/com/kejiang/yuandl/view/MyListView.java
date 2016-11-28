@@ -10,9 +10,7 @@ import android.widget.ListView;
 /**
  * File_name com.dy.logs.mp.ui.MyListView
  *
- * @author linglongxin24 <br/>
- * @date create at 2014-6-6����2:09:42 <br/>
- * @time update at 2014-6-6����2:09:42
+ * @author linglongxin24
  */
 public class MyListView extends ListView {
 

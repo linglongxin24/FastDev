@@ -26,11 +26,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kejiang.yuandl.R;
+import com.kejiang.yuandl.autolayout.AutoLayoutActivity;
+import com.kejiang.yuandl.autolayout.utils.AutoUtils;
 import com.kejiang.yuandl.http.HttpResponse;
 import com.kejiang.yuandl.http.HttpUtils;
 import com.kejiang.yuandl.utils.AppManager;
-import com.zhy.autolayout.AutoLayoutActivity;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
