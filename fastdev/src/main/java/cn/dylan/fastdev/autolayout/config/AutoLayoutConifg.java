@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
-import com.zhy.autolayout.utils.L;
-import com.zhy.autolayout.utils.ScreenUtils;
+import cn.dylan.fastdev.autolayout.utils.L;
+import cn.dylan.fastdev.autolayout.utils.ScreenUtils;
+
 
 /**
  * Created by zhy on 15/11/18.

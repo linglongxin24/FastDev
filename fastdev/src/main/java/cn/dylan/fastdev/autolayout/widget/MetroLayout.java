@@ -7,14 +7,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zhy.autolayout.AutoLayoutInfo;
-import com.zhy.autolayout.R;
-import com.zhy.autolayout.utils.AutoLayoutHelper;
-import com.zhy.autolayout.utils.AutoUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import cn.dylan.fastdev.R;
+import cn.dylan.fastdev.autolayout.AutoLayoutInfo;
+import cn.dylan.fastdev.autolayout.utils.AutoLayoutHelper;
+import cn.dylan.fastdev.autolayout.utils.AutoUtils;
 
 /**
  * Created by zhy on 15/12/10.

@@ -24,18 +24,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kejiang.yuandl.R;
-import com.kejiang.yuandl.autolayout.AutoLayoutActivity;
-import com.kejiang.yuandl.autolayout.utils.AutoUtils;
-import com.kejiang.yuandl.http.HttpResponse;
-import com.kejiang.yuandl.http.HttpUtils;
-import com.kejiang.yuandl.utils.AppManager;
-
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-import org.xutils.x;
 
 import java.util.Map;
+
+import cn.dylan.fastdev.autolayout.AutoLayoutActivity;
+import cn.dylan.fastdev.http.HttpResponse;
+import cn.dylan.fastdev.http.HttpUtils;
+import cn.dylan.fastdev.utils.AppManager;
 
 /**
  * com.bm.falvzixun.activities.BaseActivity;

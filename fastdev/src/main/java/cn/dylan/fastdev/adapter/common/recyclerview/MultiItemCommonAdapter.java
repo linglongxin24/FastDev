@@ -3,9 +3,10 @@ package cn.dylan.fastdev.adapter.common.recyclerview;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.kejiang.yuandl.adapter.common.ViewHolder;
 
 import java.util.List;
+
+import cn.dylan.fastdev.adapter.common.ViewHolder;
 
 public abstract class MultiItemCommonAdapter<T> extends CommonAdapter<T>
 {

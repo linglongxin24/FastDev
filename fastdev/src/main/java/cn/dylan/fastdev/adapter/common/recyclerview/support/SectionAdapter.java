@@ -1,16 +1,13 @@
 package cn.dylan.fastdev.adapter.common.recyclerview.support;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-
-import com.kejiang.yuandl.adapter.common.ViewHolder;
-import com.kejiang.yuandl.adapter.common.recyclerview.MultiItemCommonAdapter;
-import com.kejiang.yuandl.adapter.common.recyclerview.MultiItemTypeSupport;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import cn.dylan.fastdev.adapter.common.recyclerview.MultiItemCommonAdapter;
+import cn.dylan.fastdev.adapter.common.recyclerview.MultiItemTypeSupport;
 
 /**
  * Created by zhy on 16/4/9.

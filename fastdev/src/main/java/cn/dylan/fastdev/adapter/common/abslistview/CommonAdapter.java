@@ -6,9 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.kejiang.yuandl.adapter.common.ViewHolder;
 
 import java.util.List;
+
+import cn.dylan.fastdev.adapter.common.ViewHolder;
 
 public abstract class CommonAdapter<T> extends BaseAdapter {
     protected Context mContext;

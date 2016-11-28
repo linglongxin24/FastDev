@@ -14,14 +14,8 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
-//    productFlavors {
-//        arm {
-//            ndk {
-//                abiFilters "armeabi"
-//            }
-//        }
 //
-//    }
+
     buildTypes {
         release {
             minifyEnabled false

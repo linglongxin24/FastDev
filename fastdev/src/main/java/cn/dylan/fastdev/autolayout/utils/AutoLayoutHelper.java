@@ -22,26 +22,26 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zhy.autolayout.AutoLayoutInfo;
-import com.zhy.autolayout.R;
-import com.zhy.autolayout.attr.HeightAttr;
-import com.zhy.autolayout.attr.MarginAttr;
-import com.zhy.autolayout.attr.MarginBottomAttr;
-import com.zhy.autolayout.attr.MarginLeftAttr;
-import com.zhy.autolayout.attr.MarginRightAttr;
-import com.zhy.autolayout.attr.MarginTopAttr;
-import com.zhy.autolayout.attr.MaxHeightAttr;
-import com.zhy.autolayout.attr.MaxWidthAttr;
-import com.zhy.autolayout.attr.MinHeightAttr;
-import com.zhy.autolayout.attr.MinWidthAttr;
-import com.zhy.autolayout.attr.PaddingAttr;
-import com.zhy.autolayout.attr.PaddingBottomAttr;
-import com.zhy.autolayout.attr.PaddingLeftAttr;
-import com.zhy.autolayout.attr.PaddingRightAttr;
-import com.zhy.autolayout.attr.PaddingTopAttr;
-import com.zhy.autolayout.attr.TextSizeAttr;
-import com.zhy.autolayout.attr.WidthAttr;
-import com.zhy.autolayout.config.AutoLayoutConifg;
+import cn.dylan.fastdev.R;
+import cn.dylan.fastdev.autolayout.AutoLayoutInfo;
+import cn.dylan.fastdev.autolayout.attr.HeightAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginBottomAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginLeftAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginRightAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginTopAttr;
+import cn.dylan.fastdev.autolayout.attr.MaxHeightAttr;
+import cn.dylan.fastdev.autolayout.attr.MaxWidthAttr;
+import cn.dylan.fastdev.autolayout.attr.MinHeightAttr;
+import cn.dylan.fastdev.autolayout.attr.MinWidthAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingBottomAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingLeftAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingRightAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingTopAttr;
+import cn.dylan.fastdev.autolayout.attr.TextSizeAttr;
+import cn.dylan.fastdev.autolayout.attr.WidthAttr;
+import cn.dylan.fastdev.autolayout.config.AutoLayoutConifg;
 
 public class AutoLayoutHelper
 {

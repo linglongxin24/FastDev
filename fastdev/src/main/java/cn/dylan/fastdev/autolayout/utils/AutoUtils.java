@@ -2,11 +2,12 @@ package cn.dylan.fastdev.autolayout.utils;
 
 import android.view.View;
 
-import com.zhy.autolayout.AutoLayoutInfo;
-import com.zhy.autolayout.R;
-import com.zhy.autolayout.attr.Attrs;
-import com.zhy.autolayout.attr.AutoAttr;
-import com.zhy.autolayout.config.AutoLayoutConifg;
+import cn.dylan.fastdev.R;
+import cn.dylan.fastdev.autolayout.AutoLayoutInfo;
+import cn.dylan.fastdev.autolayout.attr.Attrs;
+import cn.dylan.fastdev.autolayout.attr.AutoAttr;
+import cn.dylan.fastdev.autolayout.config.AutoLayoutConifg;
+
 
 /**
  * Created by zhy on 15/12/4.

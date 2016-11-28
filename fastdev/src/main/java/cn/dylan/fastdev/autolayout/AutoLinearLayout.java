@@ -7,7 +7,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.zhy.autolayout.utils.AutoLayoutHelper;
+import cn.dylan.fastdev.autolayout.utils.AutoLayoutHelper;
+
 
 /**
  * Created by zhy on 15/6/30.

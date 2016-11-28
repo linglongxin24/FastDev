@@ -4,26 +4,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.zhy.autolayout.attr.Attrs;
-import com.zhy.autolayout.attr.AutoAttr;
-import com.zhy.autolayout.attr.HeightAttr;
-import com.zhy.autolayout.attr.MarginBottomAttr;
-import com.zhy.autolayout.attr.MarginLeftAttr;
-import com.zhy.autolayout.attr.MarginRightAttr;
-import com.zhy.autolayout.attr.MarginTopAttr;
-import com.zhy.autolayout.attr.MaxHeightAttr;
-import com.zhy.autolayout.attr.MaxWidthAttr;
-import com.zhy.autolayout.attr.MinHeightAttr;
-import com.zhy.autolayout.attr.MinWidthAttr;
-import com.zhy.autolayout.attr.PaddingBottomAttr;
-import com.zhy.autolayout.attr.PaddingLeftAttr;
-import com.zhy.autolayout.attr.PaddingRightAttr;
-import com.zhy.autolayout.attr.PaddingTopAttr;
-import com.zhy.autolayout.attr.TextSizeAttr;
-import com.zhy.autolayout.attr.WidthAttr;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.dylan.fastdev.autolayout.attr.Attrs;
+import cn.dylan.fastdev.autolayout.attr.AutoAttr;
+import cn.dylan.fastdev.autolayout.attr.HeightAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginBottomAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginLeftAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginRightAttr;
+import cn.dylan.fastdev.autolayout.attr.MarginTopAttr;
+import cn.dylan.fastdev.autolayout.attr.MaxHeightAttr;
+import cn.dylan.fastdev.autolayout.attr.MaxWidthAttr;
+import cn.dylan.fastdev.autolayout.attr.MinHeightAttr;
+import cn.dylan.fastdev.autolayout.attr.MinWidthAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingBottomAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingLeftAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingRightAttr;
+import cn.dylan.fastdev.autolayout.attr.PaddingTopAttr;
+import cn.dylan.fastdev.autolayout.attr.TextSizeAttr;
+import cn.dylan.fastdev.autolayout.attr.WidthAttr;
 
 public class AutoLayoutInfo
 {

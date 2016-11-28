@@ -23,7 +23,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.zhy.autolayout.utils.AutoLayoutHelper;
+import cn.dylan.fastdev.autolayout.utils.AutoLayoutHelper;
+
 
 public class AutoFrameLayout extends FrameLayout
 {

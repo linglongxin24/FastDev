@@ -20,7 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.kejiang.yuandl.autolayout.utils.AutoUtils;
+import cn.dylan.fastdev.autolayout.utils.AutoUtils;
 
 
 public class ViewHolder extends RecyclerView.ViewHolder {

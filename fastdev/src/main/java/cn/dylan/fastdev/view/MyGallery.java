@@ -14,7 +14,6 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-
 import com.kejiang.yuandl.R;
 
 import java.util.Timer;

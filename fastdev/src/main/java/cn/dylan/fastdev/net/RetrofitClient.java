@@ -4,7 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-
 import java.io.File;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

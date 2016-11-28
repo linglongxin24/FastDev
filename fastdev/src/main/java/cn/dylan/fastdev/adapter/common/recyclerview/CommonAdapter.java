@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kejiang.yuandl.adapter.common.ViewHolder;
 
 import java.util.List;
+
+import cn.dylan.fastdev.adapter.common.ViewHolder;
 
 /**
  * Created by zhy on 16/4/9.
