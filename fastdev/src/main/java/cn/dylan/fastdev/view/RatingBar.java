@@ -1,4 +1,4 @@
-package com.kejiang.yuandl.view;
+package cn.dylan.fastdev.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-
-import com.kejiang.yuandl.R;
 
 import java.math.BigDecimal;
 
@@ -192,7 +190,7 @@ public class RatingBar extends LinearLayout {
     private ImageView getStarImageView() {
         ImageView imageView = new ImageView(getContext());
 
-        LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(
+        LayoutParams layout = new LayoutParams(
                 Math.round(starImageSize), Math.round(starImageSize));//设置每颗星星在线性布局的大小
         layout.setMargins(0, 0, Math.round(starPadding), 0);//设置每颗星星在线性布局的间距
         imageView.setLayoutParams(layout);
